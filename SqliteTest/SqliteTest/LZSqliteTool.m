@@ -15,7 +15,7 @@ static NSString *LZ_tableName = nil;
 
 @implementation LZSqliteTool
 
-+ (BOOL)LZCreateSqliteWithName:(NSString*)sqliteName {
++ (BOOL)createSqliteWithName:(NSString*)sqliteName {
     NSString *fileName = nil;
     NSArray *strArr = [sqliteName componentsSeparatedByString:@"."];
     if ([[strArr lastObject] isEqualToString:@"sqlite"]) {
@@ -36,10 +36,10 @@ static NSString *LZ_tableName = nil;
     
     return YES;
 }
-+ (FMDatabase*)LZDefaultDataBase {
++ (FMDatabase*)defaultDataBase {
     static dispatch_once_t onceToken;
     if (LZ_dbPath == nil) {
-        [self LZCreateSqliteWithName:@"myDataBase"];
+        [self createSqliteWithName:@"myDataBase"];
     }
     
     dispatch_once(&onceToken, ^{
@@ -50,7 +50,7 @@ static NSString *LZ_tableName = nil;
 }
 
 //创建表格
-+ (void)LZCreateTableWithName:(NSString*)tableName {
++ (void)createTableWithName:(NSString*)tableName {
     if (![LZ_db open]) {
         [LZ_db close];
         return;
@@ -66,12 +66,12 @@ static NSString *LZ_tableName = nil;
     [LZ_db close];
 }
 
-+ (void)LZChangeTableName:(NSString*)tableName {
++ (void)changeTableName:(NSString*)tableName {
     LZ_tableName = tableName;
 }
 
 //删除表
-+ (void)LZDeleteTableWithName:(NSString*)tableName {
++ (void)deleteTableWithName:(NSString*)tableName {
     if (![LZ_db open]) {
         [LZ_db close];
         
@@ -88,7 +88,7 @@ static NSString *LZ_tableName = nil;
 }
 
 //为表添加元素
-+ (void)LZAlterElementName:(NSString*)element {
++ (void)alterElementName:(NSString*)element {
     if (![LZ_db open]) {
         [LZ_db close];
         
@@ -105,7 +105,7 @@ static NSString *LZ_tableName = nil;
     [LZ_db close];
 }
 
-+ (void)LZUpdateWithModel:(LZDataModel*)model {
++ (void)updateWithModel:(LZDataModel*)model {
     if (![LZ_db open]) {
         [LZ_db close];
         
@@ -124,7 +124,7 @@ static NSString *LZ_tableName = nil;
     [LZ_db close];
 }
 
-+ (void)LZInsertWithModel:(LZDataModel*)model {
++ (void)insertWithModel:(LZDataModel*)model {
     if (![LZ_db open]) {
         [LZ_db close];
         return;
@@ -141,7 +141,7 @@ static NSString *LZ_tableName = nil;
     [LZ_db close];
 }
 
-+ (void)LZInsertWithModel:(LZDataModel*)model useDataBaseQueue:(NSString*)queueName  {
++ (void)insertWithModel:(LZDataModel*)model useDataBaseQueue:(NSString*)queueName  {
     FMDatabaseQueue *baseQueue = [FMDatabaseQueue databaseQueueWithPath:LZ_dbPath];
     dispatch_queue_t queue = dispatch_queue_create([queueName UTF8String], NULL);
     dispatch_async(queue, ^{
@@ -160,7 +160,7 @@ static NSString *LZ_tableName = nil;
     });
 }
 
-+(NSArray*)LZSelectAllElements {
++(NSArray*)selectAllElements {
     if (![LZ_db open]) {
         [LZ_db close];
         return nil;
@@ -193,7 +193,7 @@ static NSString *LZ_tableName = nil;
     return nil;
 }
 
-+ (NSArray*)LZSelectPartElementsInRange:(NSRange)range {
++ (NSArray*)selectPartElementsInRange:(NSRange)range {
     if (![LZ_db open]) {
         [LZ_db close];
         
@@ -229,7 +229,7 @@ static NSString *LZ_tableName = nil;
     return nil;
 }
 
-+ (NSInteger)LZSelectElementCount {
++ (NSInteger)selectElementCount {
     if (![LZ_db open]) {
         [LZ_db close];
         
@@ -252,7 +252,7 @@ static NSString *LZ_tableName = nil;
     return 0;
 }
 
-+ (void)LZDeleteElement:(LZDataModel*)model {
++ (void)deleteElement:(LZDataModel*)model {
     if (![LZ_db open]) {
         [LZ_db close];
         

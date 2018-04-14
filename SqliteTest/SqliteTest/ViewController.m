@@ -20,10 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [LZSqliteTool LZCreateSqliteWithName:@"accountData"];
-    [LZSqliteTool LZDefaultDataBase];
-    [LZSqliteTool LZCreateTableWithName:@"myAccount"];
-    [LZSqliteTool LZCreateTableWithName:@"my"];
+    [LZSqliteTool createSqliteWithName:@"accountData"];
+    [LZSqliteTool defaultDataBase];
+    [LZSqliteTool createTableWithName:@"myAccount"];
+    [LZSqliteTool createTableWithName:@"my"];
 //    [LZSqliteTool LZDeleteTableWithName:@"myAccount"];
 //    [LZSqliteTool LZAlterToTable:@"myAccount" elementName:@"COUNT"];
     for (int i = 0; i < 20; i++) {
@@ -45,15 +45,15 @@
 //    [LZSqliteTool LZInsertTable:@"myAccount" model:model];
     
 //    [LZSqliteTool LZUpdateTable:@"myAccount" model:model];
-    NSArray *ARR = [LZSqliteTool LZSelectAllElements];
+    NSArray *ARR = [LZSqliteTool selectAllElements];
     NSLog(@"%@",ARR);
     
-    NSArray *arr = [LZSqliteTool LZSelectPartElementsInRange:NSMakeRange(2, 6)];
+    NSArray *arr = [LZSqliteTool selectPartElementsInRange:NSMakeRange(2, 6)];
     NSLog(@"%@",arr);
-    NSInteger COU = [LZSqliteTool LZSelectElementCount];
+    NSInteger COU = [LZSqliteTool selectElementCount];
     NSLog(@"%ld",(long)COU);
-    [LZSqliteTool LZChangeTableName:@"myAccount"];
-     COU = [LZSqliteTool LZSelectElementCount];
+    [LZSqliteTool changeTableName:@"myAccount"];
+     COU = [LZSqliteTool selectElementCount];
     NSLog(@"%ld",(long)COU);
     
     

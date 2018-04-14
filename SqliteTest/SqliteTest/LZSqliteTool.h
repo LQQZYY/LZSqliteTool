@@ -21,7 +21,7 @@
 *
 *  @return 返回是否创建成功
 */
-+ (BOOL)LZCreateSqliteWithName:(NSString*)sqliteName;
++ (BOOL)createSqliteWithName:(NSString*)sqliteName;
 
 /**
  *  @author LQQ, 16-04-19 14:04:26
@@ -30,7 +30,7 @@
  *
  *  @return 返回一个单例数据库
  */
-+ (FMDatabase*)LZDefaultDataBase;
++ (FMDatabase*)defaultDataBase;
 
 /**
  *  @author LQQ, 16-04-19 14:04:20
@@ -39,7 +39,7 @@
  *
  *  @param tableName 创建的表名
  */
-+ (void)LZCreateTableWithName:(NSString*)tableName;
++ (void)createTableWithName:(NSString*)tableName;
 
 /**
  *  @author LQQ, 16-04-19 20:04:29
@@ -48,7 +48,7 @@
  *
  *  @param tableName 切换的表名
  */
-+ (void)LZChangeTableName:(NSString*)tableName;
++ (void)changeTableName:(NSString*)tableName;
 
 /**
  *  @author LQQ, 16-04-19 14:04:54
@@ -57,7 +57,7 @@
  *
  *  @param tableName 需要删除的表名
  */
-+ (void)LZDeleteTableWithName:(NSString*)tableName;
++ (void)deleteTableWithName:(NSString*)tableName;
 
 /**
  *  @author LQQ, 16-04-19 21:04:59
@@ -66,7 +66,7 @@
  *
  *  @param element 添加的列名
  */
-+ (void)LZAlterElementName:(NSString*)element;
++ (void)alterElementName:(NSString*)element;
 
 /**
  *  @author LQQ, 16-04-19 21:04:50
@@ -75,7 +75,7 @@
  *
  *  @param model 需要添加的数据模型
  */
-+ (void)LZInsertWithModel:(LZDataModel*)model;
++ (void)insertWithModel:(LZDataModel*)model;
 
 /**
  *  @author LQQ, 16-04-19 21:04:38
@@ -85,7 +85,7 @@
  *  @param model 数据模型
  *  @param queueName 队列名称
  */
-+ (void)LZInsertWithModel:(LZDataModel*)model useDataBaseQueue:(NSString*)queueName;
++ (void)insertWithModel:(LZDataModel*)model useDataBaseQueue:(NSString*)queueName;
 
 /**
  *  @author LQQ, 16-04-19 21:04:05
@@ -94,7 +94,7 @@
  *
  *  @param model 需要修改的数据模型
  */
-+ (void)LZUpdateWithModel:(LZDataModel*)model;
++ (void)updateWithModel:(LZDataModel*)model;
 
 /**
  *  @author LQQ, 16-04-19 21:04:37
@@ -103,7 +103,7 @@
  *
  *  @return 含有所有数据模型的数组
  */
-+ (NSArray*)LZSelectAllElements;
++ (NSArray*)selectAllElements;
 
 /**
  *  @author LQQ, 16-04-19 21:04:22
@@ -114,7 +114,7 @@
  *
  *  @return 返回含有数据模型的数组
  */
-+ (NSArray*)LZSelectPartElementsInRange:(NSRange)range;
++ (NSArray*)selectPartElementsInRange:(NSRange)range;
 
 /**
  *  @author LQQ, 16-04-19 21:04:08
@@ -123,7 +123,7 @@
  *
  *  @return 表里数据的数目
  */
-+ (NSInteger)LZSelectElementCount;
++ (NSInteger)selectElementCount;
 
 /**
  *  @author LQQ, 16-04-19 21:04:50
@@ -132,5 +132,5 @@
  *
  *  @param model 需要删除的数据模型
  */
-+ (void)LZDeleteElement:(LZDataModel*)model;
++ (void)deleteElement:(LZDataModel*)model;
 @end
